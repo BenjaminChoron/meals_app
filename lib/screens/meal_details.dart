@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/providers/favorites_provider.dart';
+import 'package:meals_app/widgets/item_ingredients.dart';
+import 'package:meals_app/widgets/item_steps.dart';
 import 'package:meals_app/widgets/meal_item_image.dart';
 
 class MealDetailsScreen extends ConsumerWidget {
@@ -63,45 +65,9 @@ class MealDetailsScreen extends ConsumerWidget {
             child: MealItemImage(meal: meal),
           ),
           const SizedBox(height: 14),
-          Text(
-            'Ingredients',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 14),
-          for (final ingredient in meal.ingredients)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-              child: Text(
-                ingredient,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: Theme.of(context).colorScheme.onSurface),
-              ),
-            ),
+          ItemIngredients(ingredients: meal.ingredients),
           const SizedBox(height: 20),
-          Text(
-            'Steps',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 14),
-          for (final step in meal.steps)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-              child: Text(
-                step,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: Theme.of(context).colorScheme.onSurface),
-              ),
-            ),
+          ItemSteps(steps: meal.steps),
         ],
       ),
     );
