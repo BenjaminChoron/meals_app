@@ -57,14 +57,17 @@ class MealDetailsScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          SizedBox(
-            height: 200,
-            width: double.infinity,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                meal.imageUrl,
-                fit: BoxFit.cover,
+          Hero(
+            tag: meal.id,
+            child: SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  meal.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
