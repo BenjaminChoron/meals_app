@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/providers/favorites_provider.dart';
+import 'package:meals_app/widgets/meal_item_image.dart';
 
 class MealDetailsScreen extends ConsumerWidget {
   const MealDetailsScreen({
@@ -59,17 +60,7 @@ class MealDetailsScreen extends ConsumerWidget {
         children: [
           Hero(
             tag: meal.id,
-            child: SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  meal.imageUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            child: MealItemImage(meal: meal),
           ),
           const SizedBox(height: 14),
           Text(
